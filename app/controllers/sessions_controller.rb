@@ -1,13 +1,15 @@
 class SessionsController < ApplicationController
+
   def new
     render 'new'
   end
 
   def create
-    @user = User.authenticate(params[:email], params[:password])
+    @user = User.find_by(email: session_params["email"])
+    @user.authenticate(session_params["password"])
     if @user
       login
-      redirect_to @question
+      redirect_to questions_path
     else
       @errors = ["Incorrect email/password"]
       render 'new'
@@ -18,4 +20,9 @@ class SessionsController < ApplicationController
     logout
     redirect_to @question
   end
+
+  private
+    def session_params
+      params.require(:user).permit(:email, :password)
+    end
 end

@@ -1,15 +1,8 @@
-<h1>Sign up</h1>
-
-<%= form_for :user, url: register_path do |f| %>
+<%= form_for :user, url: login_path do |f| %>
 
   <p>
     <%= f.label :email %><br>
     <%= f.text_field :email %>
-  </p>
-
-  <p>
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
   </p>
 
   <p>
@@ -18,7 +11,7 @@
   </p>
 
   <p>
-    <%= f.submit "register" %>
+    <%= f.submit "login" %>
   </p>
 
 <% end %>

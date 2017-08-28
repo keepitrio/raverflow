@@ -6,14 +6,4 @@ class User < ApplicationRecord
   has_many :comments, foreign_key: :commenter_id
   has_many :votes, foreign_key: :voter_id
 
-  def self.authenticate(login_email, login_password)
-    @user = User.find_by(email: login_email)
-    if !@user
-      nil
-    elsif @user.password == login_password
-      @user
-    elsif @user.password != login_password
-      nil
-    end
-  end
 end
