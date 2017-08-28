@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.new(answer_params)
 
     if @answer.save
-      redirect_to @answer
+      redirect_to @answer.question
     else
       render 'new'
     end

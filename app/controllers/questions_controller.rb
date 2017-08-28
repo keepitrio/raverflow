@@ -43,6 +43,7 @@ class QuestionsController < ApplicationController
   private
     def set_question
       @question = Question.find(params[:id])
+      @answers = @question.answers
     end
 
     def question_params

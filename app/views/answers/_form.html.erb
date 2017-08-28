@@ -9,12 +9,12 @@
   <% end %>
 
   <p>
-    <%= f.label :content %>
+    <%= f.label :content, "Answer" %>
     <%= f.text_field :content %>
   </p>
 
   <p>
-    <%= f.hidden_field :question_id, value: @answer.question.id %>
+    <%= f.hidden_field :question_id, value: question.id %>
   </p>
 
   <p>

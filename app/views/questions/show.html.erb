@@ -1,4 +1,3 @@
-
 <h1>
   <%= @question.questioner.username %> asked: <%= @question.title %>
 </h1>
@@ -9,9 +8,15 @@
 </p>
 
 <h3>Answers</h3>
-<%= render @question.answers %>
+  <ul>
+    <% @question.answers.each do |answer| %>
+      <%= render 'answers/answer_details', answer: answer %>
+    <% end %>
+  </ul>
 
-<%= link_to 'Answer this question', new_answer_path %>
+<h4>New Answer</h4>
+<%= render 'answers/form', :question => @question %>
+
 
 <% if @question.comments.length != 0 %>
   <%= link_to 'Comments', question_comments_path %>

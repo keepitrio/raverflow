@@ -1,0 +1,7 @@
+<li>
+  <%= answer.content %>
+  <%= answer.votes.count %> votes
+  <% if answer.comments.length != 0 %>
+    <%= link_to 'Comments', answer_comments_path %>
+  <% end %>
+</li>
