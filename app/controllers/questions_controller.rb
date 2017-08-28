@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:edit, :destroy, :update]
+  before_action :set_question, only: [:edit, :destroy, :update, :show]
 
   def index
     @questions = Question.all
@@ -15,8 +15,12 @@ class QuestionsController < ApplicationController
     if @question.save
       redirect_to @question
     else
+      @errors = @question.errors.full_messages
       render 'new'
     end
+  end
+
+  def show
   end
 
   def edit

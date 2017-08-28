@@ -1,0 +1,18 @@
+
+<h1>
+  <%= @question.questioner.username %> asked: <%= @question.title %>
+</h1>
+
+<p>
+  <strong>Content:</strong>
+  <%= @question.content %>
+</p>
+
+<h3>Answers</h3>
+<%= render @question.answers %>
+
+<%= link_to 'Answer this question', new_answer_path %>
+
+<% if @question.comments.length != 0 %>
+  <%= link_to 'Comments', question_comments_path %>
+<% end %>

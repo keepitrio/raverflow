@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_action :set_answer, only: [:edit, :destroy, :update]
+  before_action :set_answer, only: [:edit, :destroy, :update, :show]
 
   def index
     @answers = Answer.all
@@ -17,6 +17,9 @@ class AnswersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
   end
 
   def edit
