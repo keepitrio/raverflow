@@ -9,7 +9,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to '/'
     else
-      redirect_to '/signup'
+      @errors = @user.errors.full_messages
+      render 'new'
     end
   end
 
