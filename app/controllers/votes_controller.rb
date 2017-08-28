@@ -10,7 +10,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.new(vote_params)
+    @vote = current_user.votes.new(vote_params)
 
     if @vote.save
       redirect_to @vote
@@ -37,11 +37,11 @@ class VotesController < ApplicationController
 
 
   private
-  def set_vote
-    @vote = Vote.find(params[:id])
-  end
+    def set_vote
+      @vote = Vote.find(params[:id])
+    end
 
-  def vote_params
-    params.require(:vote).permit(:value, :votable_type, :votable_id, :voter_id)
-  end
+    def vote_params
+      params.require(:vote).permit(:value, :votable_type, :votable_id)
+    end
 end

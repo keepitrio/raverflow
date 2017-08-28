@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.new(comment_params)
 
     if @comment.save
       redirect_to @comment
@@ -36,11 +36,11 @@ class CommentsController < ApplicationController
 
 
   private
-  def set_comment
-    @comment = Comment.find(params[:id])
-  end
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
 
-  def comment_params
-    params.require(:comment).permit(:content, :commentable_type, :commentable_id, :commenter_id)
-  end
+    def comment_params
+      params.require(:comment).permit(:content, :commentable_type, :commentable_id)
+    end
 end
