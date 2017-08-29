@@ -18,7 +18,9 @@
   </p>
 
   <p>
-    <%= f.hidden_field :answerer_id, value: current_user.id %>
+    <% if logged_in? %>
+      <%= f.hidden_field :answerer_id, value: current_user.id %>
+    <% end %>
   </p>
 
   <p>
