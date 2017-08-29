@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
 
     if @comment.save
-      redirect_to @comment
+      redirect_to @comment.commentable
     else
       render 'new'
     end

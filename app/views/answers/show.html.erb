@@ -14,3 +14,4 @@
 <h4>New Comment</h4>
 <%= render 'comments/form', custom_path: answer_comments_path(@answer, Comment.new), type: Answer, resource: @answer %>
 
+<%= link_to "Back", question_path %>

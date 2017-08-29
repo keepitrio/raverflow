@@ -12,6 +12,7 @@
     <% @question.answers.each do |answer| %>
       <%= render 'answers/answer_details', answer: answer %>
     <% end %>
+
   </ul>
 
 <h4>New Answer</h4>
@@ -29,3 +30,4 @@
 <h4>New Comment</h4>
 <%= render 'comments/form', custom_path: question_comments_path(@question, Comment.new), type: Question, resource: @question %>
 
+<%= link_to "Back", questions_path %>

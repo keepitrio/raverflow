@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def delete
     logout
-    redirect_to @question
+    redirect_to questions_path
   end
 
   private
