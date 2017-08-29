@@ -1,0 +1,16 @@
+<h1>
+  <%= @answer.answerer.username %> answered: <%= @answer.content %>
+</h1>
+
+<h3>Comments</h3>
+<% if @answer.comments.length != 0 %>
+  <ul>
+    <% @answer.comments.each do |comment| %>
+      <li><%= comment.content %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h4>New Comment</h4>
+<%= render 'comments/form', custom_path: answer_comments_path(@answer, Comment.new), type: Answer, resource: @answer %>
+

@@ -1,0 +1,32 @@
+<%= form_for :comment, url: custom_path do |f| %>
+
+  <% if @errors%>
+    <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= f.label :content, "Comment" %>
+    <%= f.text_field :content %>
+  </p>
+
+  <p>
+    <%= f.hidden_field :commentable_type, value: type %>
+  </p>
+
+  <p>
+    <%= f.hidden_field :commentable_id, value: resource.id %>
+  </p>
+
+  <p>
+    <%= f.hidden_field :commenter_id, value: current_user.id %>
+  </p>
+
+  <p>
+    <%= f.submit "Post Comment" %>
+  </p>
+
+<% end %>

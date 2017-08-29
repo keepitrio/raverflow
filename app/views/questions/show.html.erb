@@ -17,7 +17,15 @@
 <h4>New Answer</h4>
 <%= render 'answers/form', :question => @question %>
 
-
+<h3>Comments</h3>
 <% if @question.comments.length != 0 %>
-  <%= link_to 'Comments', question_comments_path %>
+  <ul>
+    <% @question.comments.each do |comment| %>
+      <li><%= comment.content %></li>
+    <% end %>
+  </ul>
 <% end %>
+
+<h4>New Comment</h4>
+<%= render 'comments/form', custom_path: question_comments_path(@question, Comment.new), type: Question, resource: @question %>
+
